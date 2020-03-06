@@ -1,0 +1,23 @@
+from time import strftime
+import datetime
+
+
+month = strftime('%m')
+year = strftime('%Y')
+## 5 6 0
+days_of_month = {1: 31, 2: 29, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
+year = int(year)
+count = 1
+mondays = []
+sundays = []
+saturday = []
+while count <= days_of_month[int(month[1])]:
+
+    day = datetime.datetime(year, int(month), count).weekday()
+    if day == 0 or day == 5 or day == 6:
+        mondays.append(count)
+
+    count += 1
+
+for _ in mondays:
+    print(str(year) + "-" + str(month) + "-" + str("{:02d}".format(_)))
